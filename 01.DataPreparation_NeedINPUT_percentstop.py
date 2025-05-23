@@ -82,12 +82,12 @@ def calc_r_multiple_and_risk(xls_path, stop_loss_pct):
         raise ValueError(f"รูปแบบ Date/Time ไม่ถูกต้อง: {e}")
 
 
-    for col in ['Price USD', 'Contracts']:
+    for col in ['Price USD', 'Quantity']:
         if col not in df_entry.columns:
             raise KeyError(f"ไม่พบคอลัมน์ {col} ใน Entry")
         df_entry[col] = df_entry[col].map(clean_number)
         # Ensure numeric conversion for df_exit as well for consistency if used
-        # Price USD and Contracts in Exit rows might contain data, but Profit/Run-up/Drawdown are primary.
+        # Price USD and Quantity in Exit rows might contain data, but Profit/Run-up/Drawdown are primary.
         # It's safer to map clean_number to these columns in df_exit too if they exist.
         if col in df_exit.columns:
             df_exit[col] = df_exit[col].map(clean_number)
@@ -98,7 +98,7 @@ def calc_r_multiple_and_risk(xls_path, stop_loss_pct):
         df_entry['Risk USD'] = (
             df_entry['Price USD'] *
             stop_loss_pct *
-            df_entry['Contracts'] *
+            df_entry['Quantity'] *
             point_value
         )
     else:
