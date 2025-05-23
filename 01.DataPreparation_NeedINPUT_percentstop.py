@@ -133,7 +133,7 @@ def calc_r_multiple_and_risk(xls_path, stop_loss_pct):
 
     # --- Clean and Calculate R-Multiples: Profit(R), MFE(R), MAE(R) (Only if df_exit is not empty)
     calc_fields = [
-        ('Profit(R)', 'Profit USD'),
+        ('Profit(R)', 'P&L USD'),
         ('MFE(R)',    'Run-up USD'),
         ('MAE(R)',    'Drawdown USD'),
     ]
@@ -226,7 +226,7 @@ def calc_r_multiple_and_risk(xls_path, stop_loss_pct):
         possible_columns = [
             'Trade #', 'Entry Day', 'Entry HH:MM', 'Entry Time', 'Entry Signal',
             'Exit Time', 'Exit Type',
-            'Profit USD', 'Run-up USD', 'Drawdown USD',
+            'P&L USD', 'Run-up USD', 'Drawdown USD',
             'Risk USD', 'Profit(R)', 'MFE(R)', 'MAE(R)'
         ]
         return pd.DataFrame(columns=possible_columns)
@@ -236,7 +236,7 @@ def calc_r_multiple_and_risk(xls_path, stop_loss_pct):
     desired_columns = [
         'Trade #', 'Entry Day', 'Entry HH:MM', 'Entry Time', 'Entry Signal',
         'Exit Time', 'Exit Type',
-        'Profit USD', 'Run-up USD', 'Drawdown USD',
+        'P&L USD', 'Run-up USD', 'Drawdown USD',
         'Risk USD', 'Profit(R)', 'MFE(R)', 'MAE(R)'
     ]
 
@@ -402,7 +402,7 @@ def summarize_r_multiple_stats(df_result):
 ## Analysis
 
 # Specify the path to your Excel file
-excel_file_path = '/content/GF ADR GC BE2R.xlsx' # <--- CHANGE THIS to your file path
+excel_file_path = '/content/GoldFish ADR GC BE2R.xlsx' # <--- CHANGE THIS to your file path
 # Enclose the file path in quotes
 
 # Specify the stop loss percentage (e.g., 0.2% as 0.002)
